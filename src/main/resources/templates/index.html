@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Home</h1>
+
+<a th:href="@{/newform}">New</a>
+
+<h3>List</h3>
+
+<table>
+    <tr>
+        <th>Col1</th>
+        <th>Col2</th>
+        <th>Col3</th>
+    </tr>
+    <tr th:each="img:${images}">
+        <td th:text="${img.getId()}"></td>
+        <td th:text="${img.getName()}"></td>
+        <td><img th:src="@{/TheImages/{name}(name=${img.getName()})}" alt="Image" width="100" loading="lazy"></td>
+        <td><a th:href="@{/delete/{id}(id=${img.getId()}, name=${img.getName()})}">Delete</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
